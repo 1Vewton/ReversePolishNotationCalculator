@@ -1,5 +1,6 @@
 #include "stack.h"
 #include<stdlib.h>
+#include<stdbool.h>
 
 // new_stack creates new stack
 Stack *new_stack(){
@@ -51,9 +52,31 @@ int stack_lin(
     return stack->total;
 }
 
+// empty checks if the stack is empty
+bool empty(
+    Stack *stack
+){
+    if(stack != NULL){
+        return stack->top==NULL&&stack->total==0;
+    }
+    return true;
+}
+
 // free_stack frees the stack
 void free_stack(
     Stack *stack
 ){
-    
+    if(stack==NULL){
+        return;
+    }
+    while(!empty(stack)){
+        Node *node = PopStack(
+            stack
+        );
+        if(node==NULL){
+            break;
+        }
+        free(node);
+    }
+    free(stack);
 }

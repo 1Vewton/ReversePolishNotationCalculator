@@ -1,6 +1,8 @@
 #ifndef STACK_H
 #define STACK_H
 
+#include<stdbool.h>
+
 // Node defines one node in the stack
 typedef struct {
     int data;
@@ -35,6 +37,11 @@ int stack_len(
 
 // free_stack frees datas in the stack
 void free_stack(
+    Stack *stack
+);
+
+// empty checks if the stack is empty
+bool empty(
     Stack *stack
 );
 
